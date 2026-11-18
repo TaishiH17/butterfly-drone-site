@@ -17,7 +17,7 @@
     var conn = navigator.connection || {};
     var slow = conn.saveData || (conn.effectiveType && conn.effectiveType !== '4g');
     var px = w.innerWidth * (w.devicePixelRatio || 1);
-    var key = small ? 'data-src-sm' : slow ? 'data-src' : px >= 2400 ? 'data-src-xl' : 'data-src-hq';
+    var key = small ? (slow && v.hasAttribute('data-src-smlite') ? 'data-src-smlite' : 'data-src-sm') : slow ? 'data-src' : px >= 2400 ? 'data-src-xl' : 'data-src-hq';
     v.src = v.getAttribute(key) || v.getAttribute('data-src');
     v.muted = true;
     v.setAttribute('playsinline', '');
